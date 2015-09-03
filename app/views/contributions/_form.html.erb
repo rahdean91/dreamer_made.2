@@ -1,16 +1,34 @@
-<%= simple_form_for(@contribution) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :details %>
-    <%= f.association :challenge %>
-    <%= f.association :user %>
-    <%= f.input :reward %>
-    <%= f.input :contribution_type %>
+<%= form_for @contribution, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :title, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :title, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :details, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :details, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :reward, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :reward, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :contribution_type, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :contribution_type, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  contributions_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
