@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   #->Prelang (user_login:devise/username_login_support)
   has_many :pages
   has_many :projects
+  has_many :contributions
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
