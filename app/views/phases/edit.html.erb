@@ -1,6 +1,5 @@
-<h1>Editing phase</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @phase %> |
-<%= link_to 'Back', phases_path %>
+<%- model_class = Phase -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Phase %></h1>
+</div>
+<%= render :partial => 'form' %>
