@@ -1,19 +1,28 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Challenge -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Challenge %></h1>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @challenge.title %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:title) %></dt>
+      <dd><pre class="prettyprint"><%= @challenge.title %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:details) %></dt>
+      <dd><pre class="prettyprint"><%= @challenge.details %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:public) %></dt>
+      <dd><pre class="prettyprint"><%= @challenge.public %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Details:</strong>
-  <%= @challenge.details %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              challenges_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_challenge_path(@challenge), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              challenge_path(@challenge),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Public:</strong>
-  <%= @challenge.public %>
-</p>
-
-<%= link_to 'Edit', edit_challenge_path(@challenge) %> |
-<%= link_to 'Back', challenges_path %>
